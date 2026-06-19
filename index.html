@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VINI TRENDS – Girls' Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --berry: #8B2252;
+  --berry-light: #b5336e;
+  --berry-pale: #f9eef4;
+  --berry-ultra: #fdf5f9;
+  --gold: #c8956b;
+  --gold-light: #f5e6d8;
+  --cream: #faf7f4;
+  --text: #1e1018;
+  --text-2: #5c3d4e;
+  --text-3: #9c7080;
+  --border: #edd8e6;
+  --white: #ffffff;
+  --wa: #25D366;
+  --wa-dark: #128C4A;
+  --shadow: rgba(139,34,82,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.6;}
+img{display:block;}
+
+/* ── ADMIN BADGE ── */
+#adminBadge{
+  position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;
+  background:var(--berry);color:white;padding:.35rem 1.2rem;border-radius:50px;
+  font-size:.78rem;font-weight:600;letter-spacing:.5px;display:none;
+  box-shadow:0 4px 20px var(--shadow);
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:68px;
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--berry);letter-spacing:.5px;text-decoration:none;}
+.nav-logo em{font-style:italic;color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--text-2);font-size:.88rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--berry);}
+.nav-right{display:flex;align-items:center;gap:.8rem;}
+.nav-wa{
+  background:var(--wa);color:white;padding:.48rem 1.1rem;border-radius:50px;
+  font-size:.82rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:.4rem;
+  transition:background .2s;
+}
+.nav-wa:hover{background:var(--wa-dark);}
+.admin-toggle-btn{
+  background:transparent;border:1.5px solid var(--border);color:var(--text-2);
+  padding:.45rem .9rem;border-radius:50px;font-size:.78rem;font-weight:500;cursor:pointer;
+  transition:.2s;font-family:'Inter',sans-serif;
+}
+.admin-toggle-btn:hover{border-color:var(--berry);color:var(--berry);}
+.hamburger{display:none;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--text);}
+
+/* ── HERO ── */
+.hero{
+  min-height:92vh;
+  background:linear-gradient(150deg,var(--berry-ultra) 0%,var(--berry-pale) 55%,var(--gold-light) 100%);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  padding:4rem 4rem 3rem;gap:4rem;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;right:-120px;bottom:-120px;
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(200,149,107,.18),transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:white;border:1px solid var(--border);
+  padding:.35rem 1rem;border-radius:50px;
+  font-size:.75rem;font-weight:600;color:var(--berry);letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:1.4rem;
+  box-shadow:0 2px 12px var(--shadow);
+}
+.hero-eyebrow span{color:var(--gold);}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,5.5vw,4.4rem);line-height:1.1;
+  color:var(--text);margin-bottom:1.2rem;
+}
+.hero h1 em{color:var(--berry);font-style:italic;}
+.hero h1 strong{color:var(--gold);font-weight:600;}
+.hero-sub{color:var(--text-2);font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:420px;}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;}
+.btn-berry{
+  background:var(--berry);color:white;padding:.85rem 2rem;border-radius:50px;
+  text-decoration:none;font-weight:600;font-size:.9rem;border:none;cursor:pointer;
+  transition:.2s;display:inline-flex;align-items:center;gap:.4rem;
+}
+.btn-berry:hover{background:var(--berry-light);transform:translateY(-2px);}
+.btn-ghost{
+  background:transparent;color:var(--berry);padding:.83rem 1.8rem;border-radius:50px;
+  text-decoration:none;font-weight:600;font-size:.9rem;border:2px solid var(--berry);
+  cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:.4rem;
+}
+.btn-ghost:hover{background:var(--berry-pale);}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;}
+.stat{text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--berry);}
+.stat-label{font-size:.72rem;color:var(--text-3);font-weight:500;text-transform:uppercase;letter-spacing:.5px;}
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;position:relative;z-index:1;}
+.hv-card{
+  background:white;border-radius:22px;overflow:hidden;
+  box-shadow:0 12px 48px var(--shadow);transition:transform .35s;
+}
+.hv-card:hover{transform:translateY(-6px);}
+.hv-card:nth-child(2){margin-top:2.5rem;}
+.hv-card img{width:100%;height:210px;object-fit:cover;}
+.hv-info{padding:.9rem 1rem;}
+.hv-name{font-size:.88rem;font-weight:500;color:var(--text);}
+.hv-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--berry);}
+
+/* ── MARQUEE ── */
+.marquee-wrap{
+  background:linear-gradient(90deg,var(--berry) 0%,var(--berry-light) 50%,var(--berry) 100%);
+  padding:.8rem 0;overflow:hidden;
+}
+.marquee-inner{display:flex;gap:3rem;animation:scroll-left 22s linear infinite;white-space:nowrap;}
+.marquee-inner span{color:rgba(255,255,255,.95);font-size:.82rem;font-weight:500;letter-spacing:.5px;flex-shrink:0;}
+.marquee-inner span::before{content:'✦  ';opacity:.6;}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 3rem;}
+.section.alt{background:var(--berry-ultra);}
+.section-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3vw,2.8rem);color:var(--text);margin-bottom:.8rem;}
+.section-sub{color:var(--text-2);font-size:.95rem;max-width:520px;line-height:1.75;}
+
+/* ── FEATURE STRIP ── */
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.feature{
+  padding:1.8rem 1.4rem;text-align:center;border-right:1px solid var(--border);
+  transition:background .2s;
+}
+.feature:last-child{border-right:none;}
+.feature:hover{background:var(--berry-ultra);}
+.feature-icon{font-size:1.6rem;margin-bottom:.6rem;}
+.feature-title{font-weight:600;font-size:.88rem;color:var(--text);margin-bottom:.25rem;}
+.feature-desc{font-size:.78rem;color:var(--text-3);line-height:1.5;}
+
+/* ── FILTER ── */
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin:2rem 0 1.5rem;}
+.filter-btn{
+  background:white;border:1.5px solid var(--border);padding:.5rem 1.3rem;
+  border-radius:50px;font-size:.83rem;cursor:pointer;color:var(--text-2);
+  font-weight:500;transition:.2s;font-family:'Inter',sans-serif;
+}
+.filter-btn.active,.filter-btn:hover{background:var(--berry);border-color:var(--berry);color:white;}
+
+/* ── PRODUCT GRID ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:1.5rem;}
+.product-card{
+  background:white;border-radius:22px;overflow:hidden;
+  border:1px solid var(--border);
+  transition:transform .3s,box-shadow .3s;position:relative;
+}
+.product-card:hover{transform:translateY(-7px);box-shadow:0 24px 70px var(--shadow);}
+.product-img-wrap{position:relative;overflow:hidden;}
+.product-img-wrap img{width:100%;height:290px;object-fit:cover;transition:transform .45s;}
+.product-card:hover .product-img-wrap img{transform:scale(1.07);}
+.product-badge{
+  position:absolute;top:12px;left:12px;
+  background:var(--berry);color:white;
+  font-size:.68rem;font-weight:600;padding:.28rem .75rem;border-radius:50px;
+  letter-spacing:.4px;text-transform:uppercase;
+}
+.product-badge.gold{background:var(--gold);}
+.wish-btn{
+  position:absolute;top:12px;right:12px;
+  background:white;border:none;width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1rem;box-shadow:0 2px 10px rgba(0,0,0,.1);
+  transition:.2s;
+}
+.wish-btn:hover{transform:scale(1.1);}
+.wish-btn.liked{color:var(--berry);}
+/* Admin edit overlay */
+.admin-overlay{
+  display:none;position:absolute;inset:0;background:rgba(139,34,82,.82);
+  align-items:center;justify-content:center;flex-direction:column;gap:.7rem;
+  z-index:10;
+}
+.admin-mode .admin-overlay{display:flex;}
+.admin-btn-sm{
+  background:white;color:var(--berry);border:none;padding:.5rem 1.1rem;
+  border-radius:50px;font-size:.8rem;font-weight:600;cursor:pointer;
+  transition:.2s;font-family:'Inter',sans-serif;
+}
+.admin-btn-sm:hover{background:var(--berry);color:white;}
+.product-body{padding:1.1rem;}
+.product-cat{font-size:.72rem;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.25rem;}
+.product-name{font-weight:600;font-size:.96rem;color:var(--text);margin-bottom:.3rem;}
+.product-price-row{display:flex;align-items:baseline;gap:.5rem;margin-bottom:1rem;}
+.product-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--berry);font-weight:600;}
+.product-old{font-size:.82rem;color:var(--text-3);text-decoration:line-through;}
+.order-btn{
+  width:100%;background:var(--wa);color:white;border:none;
+  padding:.72rem;border-radius:50px;font-size:.86rem;font-weight:600;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  transition:.2s;font-family:'Inter',sans-serif;
+}
+.order-btn:hover{background:var(--wa-dark);}
+
+/* ── REVIEWS ── */
+.reviews-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;}
+.write-review-btn{
+  background:var(--berry);color:white;border:none;padding:.6rem 1.4rem;
+  border-radius:50px;font-size:.85rem;font-weight:600;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:.2s;display:flex;align-items:center;gap:.4rem;
+}
+.write-review-btn:hover{background:var(--berry-light);}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem;}
+.review-card{
+  background:white;border-radius:18px;padding:1.4rem;
+  border:1px solid var(--border);transition:.2s;
+}
+.review-card:hover{box-shadow:0 8px 30px var(--shadow);}
+.review-header{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;}
+.review-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--berry),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:700;font-size:.95rem;flex-shrink:0;
+}
+.review-meta{}
+.review-name{font-weight:600;font-size:.9rem;color:var(--text);}
+.review-date{font-size:.72rem;color:var(--text-3);}
+.review-stars{color:#f59e0b;font-size:.95rem;margin-bottom:.6rem;}
+.review-product{font-size:.75rem;color:var(--gold);font-weight:600;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px;}
+.review-text{color:var(--text-2);font-size:.88rem;line-height:1.65;font-style:italic;}
+/* Admin delete btn */
+.review-del{
+  display:none;margin-top:.6rem;background:none;border:1px solid #fca5a5;
+  color:#dc2626;padding:.3rem .8rem;border-radius:50px;font-size:.75rem;cursor:pointer;
+  font-family:'Inter',sans-serif;
+}
+.admin-mode .review-del{display:inline-block;}
+
+/* ── INSTAGRAM ── */
+.ig-section{text-align:center;padding:5rem 2rem;background:linear-gradient(135deg,var(--berry-pale),var(--gold-light));}
+.ig-handle{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--berry);margin:1rem 0 .5rem;}
+.ig-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
+  color:white;padding:.85rem 2rem;border-radius:50px;
+  text-decoration:none;font-weight:600;font-size:.92rem;margin-top:1rem;
+  transition:opacity .2s;
+}
+.ig-btn:hover{opacity:.88;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--text);color:white;
+  padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;
+}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:.4rem;}
+.footer-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6;}
+.footer-heading{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom.8rem;}
+.footer-links{list-style:none;margin-top:.8rem;}
+.footer-links li{margin-bottom:.4rem;}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-wa{display:flex;align-items:center;gap:.5rem;color:var(--wa);text-decoration:none;font-size:.9rem;font-weight:600;margin-top:.8rem;}
+.footer-bottom{background:#12080e;color:rgba(255,255,255,.35);text-align:center;padding:.9rem;font-size:.78rem;}
+
+/* ── FLOAT WA ── */
+.float-wa{
+  position:fixed;bottom:1.6rem;right:1.6rem;z-index:300;
+  background:var(--wa);color:white;width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;box-shadow:0 6px 30px rgba(37,211,102,.4);
+  animation:wa-pulse 2.5s ease-in-out infinite;
+}
+@keyframes wa-pulse{0%,100%{box-shadow:0 6px 30px rgba(37,211,102,.4)}50%{box-shadow:0 6px 40px rgba(37,211,102,.65)}}
+
+/* ── MODALS ── */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(20,5,12,.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:1rem;overflow-y:auto;
+}
+.overlay.open{display:flex;}
+.modal{
+  background:white;border-radius:26px;max-width:460px;width:100%;
+  padding:2rem;position:relative;animation:pop .25s ease;
+  max-height:90vh;overflow-y:auto;
+}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--berry-pale);border:none;width:34px;height:34px;border-radius:50%;
+  cursor:pointer;font-size:1rem;color:var(--berry);
+  display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.modal-close:hover{background:var(--berry);color:white;}
+.modal h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--text);margin-bottom:.25rem;}
+.modal-sub{color:var(--text-3);font-size:.85rem;margin-bottom:1.4rem;}
+
+/* ORDER MODAL */
+.order-card-box{
+  background:var(--berry-ultra);border:1.5px dashed var(--border);
+  border-radius:16px;padding:1.3rem;margin-bottom:1.2rem;
+}
+.order-card-box .label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);margin-bottom:.6rem;}
+.order-row{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.88rem;}
+.order-row:last-child{border:none;font-weight:600;color:var(--berry);}
+.order-steps{margin-bottom:1.4rem;}
+.order-step{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:.75rem;}
+.step-circle{background:var(--berry);color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:.86rem;color:var(--text-2);line-height:1.5;}
+.wa-big{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:var(--wa);color:white;border:none;width:100%;
+  padding:1rem;border-radius:50px;font-size:.96rem;font-weight:600;
+  text-decoration:none;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;
+  margin-bottom:.7rem;
+}
+.wa-big:hover{background:var(--wa-dark);}
+.ss-big{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:var(--berry);color:white;border:none;width:100%;
+  padding:1rem;border-radius:50px;font-size:.96rem;font-weight:600;
+  cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;
+}
+.ss-big:hover{background:var(--berry-light);}
+
+/* REVIEW MODAL */
+.star-pick{display:flex;gap:.5rem;margin-bottom:1rem;}
+.star-pick span{font-size:1.8rem;cursor:pointer;transition:.15s;color:#d1d5db;}
+.star-pick span.on{color:#f59e0b;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--text-2);margin-bottom:.35rem;}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:.7rem .9rem;border:1.5px solid var(--border);border-radius:12px;
+  font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);background:white;
+  transition:border-color .2s;outline:none;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--berry);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.submit-btn{
+  width:100%;background:var(--berry);color:white;border:none;padding:1rem;
+  border-radius:50px;font-size:.96rem;font-weight:600;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:.2s;
+}
+.submit-btn:hover{background:var(--berry-light);}
+.form-success{text-align:center;padding:1.5rem;display:none;}
+.form-success .check{font-size:3rem;}
+.form-success p{color:var(--text-2);margin-top:.5rem;font-size:.9rem;}
+
+/* ADMIN PANEL */
+.admin-panel{
+  display:none;position:fixed;top:0;right:0;bottom:0;width:360px;z-index:600;
+  background:white;box-shadow:-8px 0 60px rgba(0,0,0,.18);overflow-y:auto;
+  animation:slide-in .3s ease;
+}
+.admin-panel.open{display:block;}
+@keyframes slide-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.admin-header{
+  background:var(--berry);color:white;padding:1.4rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1;
+}
+.admin-header h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;}
+.admin-close{background:rgba(255,255,255,.2);border:none;color:white;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+.admin-body{padding:1.4rem;}
+.admin-section{margin-bottom:1.8rem;}
+.admin-section-title{
+  font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--text-3);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);
+}
+/* Admin product list */
+.ap-product{
+  display:flex;align-items:center;gap:.8rem;padding:.7rem;border-radius:12px;
+  border:1px solid var(--border);margin-bottom:.6rem;
+}
+.ap-img{width:52px;height:52px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+.ap-info{flex:1;min-width:0;}
+.ap-name{font-size:.84rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ap-price{font-size:.78rem;color:var(--berry);}
+.ap-actions{display:flex;gap:.4rem;flex-shrink:0;}
+.ap-btn{
+  background:var(--berry-pale);border:none;color:var(--berry);
+  width:30px;height:30px;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+  transition:.2s;
+}
+.ap-btn:hover{background:var(--berry);color:white;}
+.ap-btn.del{background:#fef2f2;color:#dc2626;}
+.ap-btn.del:hover{background:#dc2626;color:white;}
+/* Add product form */
+.add-product-form{background:var(--berry-ultra);border-radius:14px;padding:1.1rem;border:1px dashed var(--border);}
+.add-product-form .form-group{margin-bottom:.8rem;}
+.add-product-form label{font-size:.75rem;}
+.add-product-form input,.add-product-form select{padding:.55rem .8rem;border-radius:10px;}
+.add-btn{
+  width:100%;background:var(--berry);color:white;border:none;padding:.75rem;
+  border-radius:50px;font-size:.88rem;font-weight:600;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:.2s;
+}
+.add-btn:hover{background:var(--berry-light);}
+/* Image upload */
+.upload-area{
+  border:2px dashed var(--border);border-radius:14px;padding:1.5rem;
+  text-align:center;cursor:pointer;transition:.2s;background:var(--berry-ultra);
+}
+.upload-area:hover{border-color:var(--berry);}
+.upload-area input{display:none;}
+.upload-icon{font-size:2rem;margin-bottom:.5rem;}
+.upload-text{font-size:.82rem;color:var(--text-2);}
+.upload-text strong{color:var(--berry);}
+/* Reviews in admin */
+.ap-review{
+  background:var(--berry-ultra);border-radius:12px;padding:.8rem;
+  border:1px solid var(--border);margin-bottom:.6rem;font-size:.82rem;
+}
+.ap-review-name{font-weight:600;color:var(--text);}
+.ap-review-text{color:var(--text-2);margin-top:.2rem;line-height:1.5;}
+.ap-review-actions{display:flex;gap:.4rem;margin-top:.5rem;}
+.ap-review-btn{
+  background:none;border:1px solid var(--border);color:var(--text-2);
+  padding:.28rem .7rem;border-radius:50px;font-size:.72rem;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:.2s;
+}
+.ap-review-btn.approve{border-color:#16a34a;color:#16a34a;}
+.ap-review-btn.approve:hover{background:#16a34a;color:white;}
+.ap-review-btn.reject{border-color:#dc2626;color:#dc2626;}
+.ap-review-btn.reject:hover{background:#dc2626;color:white;}
+/* Pending badge */
+.pending-badge{
+  background:#fef9c3;color:#854d0e;
+  font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:50px;margin-left:.4rem;
+}
+
+/* ── EDIT PRODUCT MODAL ── */
+#editModal .modal{max-width:480px;}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem;min-height:auto;}
+  .hero-visual{display:none;}
+  .features{grid-template-columns:1fr 1fr;}
+  .feature:nth-child(2){border-right:none;}
+  .feature:nth-child(3){border-top:1px solid var(--border);}
+  .feature:nth-child(4){border-top:1px solid var(--border);border-right:none;}
+  nav{padding:0 1rem;}
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+  .section{padding:3.5rem 1.4rem;}
+  footer{grid-template-columns:1fr;}
+  .admin-panel{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<div id="adminBadge">🔐 Admin Mode Active</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Vini <em>Trends</em></a>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="admin-toggle-btn" onclick="toggleAdminLogin()">🔐 Admin</button>
+    <a class="nav-wa" href="https://wa.me/918866920012" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button class="hamburger" onclick="toggleNav()">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">✨ New Arrivals <span>2024</span> ✨</div>
+    <h1>Where Every Girl<br>Finds Her <em>Style</em> &<br><strong>Confidence</strong></h1>
+    <p class="hero-sub">Premium girls' wear from breezy tops to chic shirts — handpicked for every mood, occasion & budget. Starting at just ₹120. 💕</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-berry">Shop Collection</a>
+      <a href="https://wa.me/918866920012" target="_blank" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat to Order
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="statProducts">10+</div><div class="stat-label">Styles</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Happy Girls</div></div>
+      <div class="stat"><div class="stat-num">₹120</div><div class="stat-label">Starts From</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-card">
+      <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=420&fit=crop&q=80" alt="Off Shoulder Top">
+      <div class="hv-info"><div class="hv-name">Off Shoulder Top</div><div class="hv-price">₹150</div></div>
+    </div>
+    <div class="hv-card">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=420&fit=crop&q=80" alt="Cream Frill Top">
+      <div class="hv-info"><div class="hv-name">Cream Frill Top</div><div class="hv-price">₹150</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>Free Delivery Available</span><span>WhatsApp Orders 24/7</span><span>Premium Quality Fabric</span>
+    <span>Starting ₹120 Only</span><span>Fast Delivery</span><span>New Arrivals Weekly</span>
+    <span>Girls' Wear Specialist</span><span>Easy Returns Policy</span><span>Trusted by 500+ Girls</span>
+    <span>Free Delivery Available</span><span>WhatsApp Orders 24/7</span><span>Premium Quality Fabric</span>
+    <span>Starting ₹120 Only</span><span>Fast Delivery</span><span>New Arrivals Weekly</span>
+    <span>Girls' Wear Specialist</span><span>Easy Returns Policy</span><span>Trusted by 500+ Girls</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="feature"><div class="feature-icon">🚚</div><div class="feature-title">Fast Delivery</div><div class="feature-desc">Quick dispatch right to your door</div></div>
+  <div class="feature"><div class="feature-icon">💬</div><div class="feature-title">WhatsApp Orders</div><div class="feature-desc">Order easily via WhatsApp chat</div></div>
+  <div class="feature"><div class="feature-icon">✨</div><div class="feature-title">Premium Quality</div><div class="feature-desc">Carefully selected fabrics & styles</div></div>
+  <div class="feature"><div class="feature-icon">💕</div><div class="feature-title">Girls' First</div><div class="feature-desc">Every piece made for your confidence</div></div>
+</div>
+
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="section-eyebrow">Our Collection</div>
+  <h2 class="section-title">Shop Girls' Wear</h2>
+  <p class="section-sub">Every piece handpicked for style, comfort, and confidence. Click any item to order via WhatsApp.</p>
+  <div class="filters" id="filterBar">
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="tops">Tops</button>
+    <button class="filter-btn" data-cat="shirts">Shirts</button>
+    <button class="filter-btn" data-cat="tshirts">T-Shirts</button>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section alt" id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-eyebrow">Customer Love</div>
+      <h2 class="section-title">What Girls Are Saying 💬</h2>
+    </div>
+    <button class="write-review-btn" onclick="openReviewModal()">✍️ Write a Review</button>
+  </div>
+  <div class="reviews-grid" id="reviewsGrid"></div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig-section" id="instagram">
+  <div class="section-eyebrow">Stay Connected</div>
+  <h2 class="section-title">Follow Our Style Journey</h2>
+  <div class="ig-handle">@viniiitrendz_</div>
+  <p style="color:var(--text-2);font-size:.9rem;">New looks, styling tips & drops every day</p>
+  <a href="https://www.instagram.com/viniiitrendz_?igsh=MW1zM2hmcXIza2xjbg==" target="_blank" class="ig-btn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    Follow on Instagram
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Vini Trends</div>
+    <div class="footer-desc">Fashion That Defines You.<br>Premium girls' wear, delivered with love.</div>
+    <a href="https://wa.me/918866920012" class="footer-wa" target="_blank" style="margin-top:1rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      +91 88669 20012
+    </a>
+  </div>
+  <div>
+    <div class="footer-heading">Quick Links</div>
+    <ul class="footer-links">
+      <li><a href="#shop">Shop Collection</a></li>
+      <li><a href="#reviews">Customer Reviews</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="https://wa.me/918866920012" target="_blank">WhatsApp Us</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-heading">Categories</div>
+    <ul class="footer-links">
+      <li><a href="#shop" onclick="filterProd('tops')">Tops</a></li>
+      <li><a href="#shop" onclick="filterProd('shirts')">Shirts</a></li>
+      <li><a href="#shop" onclick="filterProd('tshirts')">T-Shirts</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2024 Vini Trends · Made with 💕 in India · WhatsApp: +91 88669 20012</div>
+
+<!-- FLOAT WA -->
+<a href="https://wa.me/918866920012" class="float-wa" target="_blank" title="Order on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ═══════════════════ ORDER MODAL ═══════════════════ -->
+<div class="overlay" id="orderOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeOverlay('orderOverlay')">✕</button>
+    <h2>Order Item 🛍️</h2>
+    <p class="modal-sub" id="orderModalSub"></p>
+    <div class="order-card-box">
+      <div class="label">📋 Your Order Summary</div>
+      <div class="order-row"><span>Product</span><span id="oProduct"></span></div>
+      <div class="order-row"><span>Category</span><span id="oCategory"></span></div>
+      <div class="order-row"><span>Price</span><span id="oPrice"></span></div>
+      <div class="order-row"><span>Shop</span><span>VINI TRENDS</span></div>
+      <div class="order-row"><span>WhatsApp</span><span>+91 88669 20012</span></div>
+    </div>
+    <div class="order-steps">
+      <p style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);margin-bottom:.8rem;">📸 How to Order</p>
+      <div class="order-step"><div class="step-circle">1</div><div class="step-text">Take a screenshot of this order summary above — it shows your product & price clearly.</div></div>
+      <div class="order-step"><div class="step-circle">2</div><div class="step-text">Tap <strong>"Open WhatsApp"</strong> — it opens a chat with us with a pre-filled message.</div></div>
+      <div class="order-step"><div class="step-circle">3</div><div class="step-text">Send the screenshot + your name & address in the chat. We confirm & dispatch! 🎉</div></div>
+    </div>
+    <a class="wa-big" id="orderWaBtn" href="#" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Open WhatsApp to Order
+    </a>
+    <button class="ss-big" onclick="showScreenshotTip()">📸 Screenshot This Order Card</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ REVIEW MODAL ═══════════════════ -->
+<div class="overlay" id="reviewOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeOverlay('reviewOverlay')">✕</button>
+    <div id="reviewFormWrap">
+      <h2>Share Your Experience ✨</h2>
+      <p class="modal-sub">Your feedback helps other girls choose the perfect outfit!</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="rvName" placeholder="e.g. Priya S.">
+      </div>
+      <div class="form-group">
+        <label>Your Rating</label>
+        <div class="star-pick" id="starPick">
+          <span onclick="setStar(1)">★</span><span onclick="setStar(2)">★</span>
+          <span onclick="setStar(3)">★</span><span onclick="setStar(4)">★</span><span onclick="setStar(5)">★</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Product Purchased (optional)</label>
+        <select id="rvProduct">
+          <option value="">— Select product —</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Review</label>
+        <textarea id="rvText" placeholder="Tell us about the quality, fit, delivery speed..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitReview()">Submit Review 💕</button>
+    </div>
+    <div class="form-success" id="reviewSuccess">
+      <div class="check">🎉</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;color:var(--berry);margin-top:.5rem;">Thank You!</h2>
+      <p>Your review has been submitted and is pending admin approval. We appreciate your feedback!</p>
+      <button class="submit-btn" style="margin-top:1.2rem;" onclick="closeOverlay('reviewOverlay')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ADMIN LOGIN MODAL ═══════════════════ -->
+<div class="overlay" id="adminLoginOverlay">
+  <div class="modal" style="max-width:360px;">
+    <button class="modal-close" onclick="closeOverlay('adminLoginOverlay')">✕</button>
+    <h2>Admin Login 🔐</h2>
+    <p class="modal-sub">Enter password to access admin panel</p>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="adminPassInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    </div>
+    <p id="adminLoginErr" style="color:#dc2626;font-size:.8rem;display:none;margin-bottom:.8rem;">❌ Incorrect password. Try again.</p>
+    <button class="submit-btn" onclick="doAdminLogin()">Login to Admin Panel</button>
+    <p style="font-size:.75rem;color:var(--text-3);margin-top:.8rem;text-align:center;">Default password: <strong>vini2024</strong></p>
+  </div>
+</div>
+
+<!-- ═══════════════════ EDIT PRODUCT MODAL ═══════════════════ -->
+<div class="overlay" id="editOverlay">
+  <div class="modal" style="max-width:420px;">
+    <button class="modal-close" onclick="closeOverlay('editOverlay')">✕</button>
+    <h2>Edit Product ✏️</h2>
+    <input type="hidden" id="editId">
+    <div class="form-group"><label>Product Name</label><input type="text" id="editName"></div>
+    <div class="form-group"><label>Price (₹)</label><input type="number" id="editPrice"></div>
+    <div class="form-group"><label>Category</label>
+      <select id="editCat">
+        <option value="tops">Tops</option><option value="shirts">Shirts</option><option value="tshirts">T-Shirts</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Badge</label><input type="text" id="editBadge" placeholder="e.g. New, Best Seller"></div>
+    <div class="form-group"><label>Image URL</label><input type="text" id="editImg" placeholder="https://..."></div>
+    <div class="form-group">
+      <label>Or Upload Image</label>
+      <div class="upload-area" onclick="document.getElementById('editImgUpload').click()">
+        <input type="file" id="editImgUpload" accept="image/*" onchange="previewEditImg(this)">
+        <div class="upload-icon">📷</div>
+        <div class="upload-text"><strong>Click to upload</strong> or use URL above</div>
+      </div>
+      <img id="editImgPreview" src="" style="width:100%;border-radius:12px;margin-top:.6rem;display:none;">
+    </div>
+    <button class="submit-btn" onclick="saveEditProduct()">Save Changes</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ ADMIN PANEL SIDEBAR ═══════════════════ -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-header">
+    <h3>Admin Panel</h3>
+    <div style="display:flex;gap:.5rem;align-items:center;">
+      <button style="background:rgba(255,255,255,.2);border:none;color:white;padding:.3rem .8rem;border-radius:50px;font-size:.75rem;cursor:pointer;font-family:Inter,sans-serif;" onclick="logoutAdmin()">Logout</button>
+      <button class="admin-close" onclick="closeAdminPanel()">✕</button>
+    </div>
+  </div>
+  <div class="admin-body">
+
+    <!-- STATS -->
+    <div class="admin-section">
+      <div class="admin-section-title">Dashboard</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;">
+        <div style="background:var(--berry-ultra);border-radius:12px;padding:.9rem;border:1px solid var(--border);text-align:center;">
+          <div style="font-size:1.5rem;font-weight:700;color:var(--berry);" id="statTotal">10</div>
+          <div style="font-size:.72rem;color:var(--text-3);">Total Products</div>
+        </div>
+        <div style="background:var(--berry-ultra);border-radius:12px;padding:.9rem;border:1px solid var(--border);text-align:center;">
+          <div style="font-size:1.5rem;font-weight:700;color:var(--gold);" id="statPending">0</div>
+          <div style="font-size:.72rem;color:var(--text-3);">Pending Reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="admin-section">
+      <div class="admin-section-title">Manage Products</div>
+      <div id="apProductList"></div>
+    </div>
+
+    <!-- ADD PRODUCT -->
+    <div class="admin-section">
+      <div class="admin-section-title">Add New Product</div>
+      <div class="add-product-form">
+        <div class="form-group"><label>Name</label><input type="text" id="newName" placeholder="Product name"></div>
+        <div class="form-group"><label>Price (₹)</label><input type="number" id="newPrice" placeholder="150"></div>
+        <div class="form-group"><label>Category</label>
+          <select id="newCat">
+            <option value="tops">Tops</option><option value="shirts">Shirts</option><option value="tshirts">T-Shirts</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Badge (optional)</label><input type="text" id="newBadge" placeholder="e.g. New"></div>
+        <div class="form-group">
+          <label>Image</label>
+          <div class="upload-area" onclick="document.getElementById('newImgUpload').click()" style="padding:1rem;">
+            <input type="file" id="newImgUpload" accept="image/*" onchange="handleNewImg(this)">
+            <div class="upload-icon" style="font-size:1.3rem;">📷</div>
+            <div class="upload-text" style="font-size:.75rem;"><strong>Upload image</strong></div>
+          </div>
+          <input type="text" id="newImgUrl" placeholder="or paste image URL" style="margin-top:.5rem;">
+          <img id="newImgPreview" src="" style="width:100%;border-radius:10px;margin-top:.5rem;display:none;">
+        </div>
+        <button class="add-btn" onclick="addProduct()">+ Add Product</button>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="admin-section">
+      <div class="admin-section-title">Review Moderation <span class="pending-badge" id="pendingBadge" style="display:none;"></span></div>
+      <div id="apReviewList"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const WA = '918866920012';
+const ADMIN_PASS = 'vini2024';
+let isAdmin = false;
+let selectedStars = 0;
+let editingImgData = null;
+let newImgData = null;
+let currentFilter = 'all';
+
+// ── DATA ──
+let products = [
+  {id:1,name:'Black Graphic T-Shirt',price:120,category:'tshirts',img:'https://images.unsplash.com/photo-1622470953794-aa9c70b0fb9d?w=400&h=500&fit=crop&q=80',badge:'Best Seller'},
+  {id:2,name:'Shack Oversized T-Shirt',price:120,category:'tshirts',img:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop&q=80',badge:'Trending'},
+  {id:3,name:'Pink Casual T-Shirt',price:120,category:'tshirts',img:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=500&fit=crop&q=80',badge:'New'},
+  {id:4,name:'Blue Stripe Shirt',price:150,category:'shirts',img:'https://images.unsplash.com/photo-1594938298603-c8148c4b4ae0?w=400&h=500&fit=crop&q=80',badge:'Popular'},
+  {id:5,name:'Floral Check Shirt',price:150,category:'shirts',img:'https://images.unsplash.com/photo-1604575433370-b1b0b2bf19de?w=400&h=500&fit=crop&q=80',badge:''},
+  {id:6,name:'Embroidery Stripe Shirt',price:150,category:'shirts',img:'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=400&h=500&fit=crop&q=80',badge:'Premium'},
+  {id:7,name:'Sky Blue Stripe Shirt',price:150,category:'shirts',img:'https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=400&h=500&fit=crop&q=80',badge:''},
+  {id:8,name:'Brown Off Shoulder Top',price:150,category:'tops',img:'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=500&fit=crop&q=80',badge:'💕 Fav'},
+  {id:9,name:'Cream Frill Top',price:150,category:'tops',img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=500&fit=crop&q=80',badge:'Elegant'},
+  {id:10,name:'Blue Lace Puff Sleeve Top',price:150,category:'tops',img:'https://images.unsplash.com/photo-1551489186-cf8726f514f8?w=400&h=500&fit=crop&q=80',badge:'Cute'},
+];
+
+let reviews = [
+  {id:1,name:'Priya S.',stars:5,product:'Pink Casual T-Shirt',text:'Quality bahu sari che. Exactly photo jevu product malyu. Super fast delivery!',date:'Dec 2024',approved:true},
+  {id:2,name:'Khushi P.',stars:5,product:'Cream Frill Top',text:'Affordable price ane fast WhatsApp response. Khub pasand padyu. Will order again!',date:'Dec 2024',approved:true},
+  {id:3,name:'Riya D.',stars:5,product:'Blue Lace Puff Sleeve Top',text:'Stylish collection! Fabric quality awesome. Mara friends ne pan recommend karish.',date:'Nov 2024',approved:true},
+  {id:4,name:'Meera T.',stars:5,product:'Brown Off Shoulder Top',text:'Off shoulder top khub cute che! Perfectly fits, color ekdum photo jaisu. Love it ❤️',date:'Nov 2024',approved:true},
+  {id:5,name:'Sneha V.',stars:5,product:'Embroidery Stripe Shirt',text:'Best quality ever! Shirt ni stitching perfect che. Very happy with Vini Trends 🌸',date:'Nov 2024',approved:true},
+  {id:6,name:'Aarti M.',stars:5,product:'Shack Oversized T-Shirt',text:'Oversized tshirt bahu comfortable che. Exactly as shown. Fast delivery. 100% recommend!',date:'Oct 2024',approved:true},
+];
+let nextId = 11;
+let nextRvId = 7;
+let nextProdId = 11;
+
+const wasvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
+// ── RENDER PRODUCTS ──
+function renderProducts(filter){
+  currentFilter = filter || currentFilter;
+  const grid = document.getElementById('productGrid');
+  const list = currentFilter==='all' ? products : products.filter(p=>p.category===currentFilter);
+  grid.innerHTML = list.map(p=>`
+    <div class="product-card${isAdmin?' admin-mode':''}" id="pc-${p.id}">
+      <div class="admin-overlay">
+        <button class="admin-btn-sm" onclick="openEditProduct(${p.id})">✏️ Edit</button>
+        <button class="admin-btn-sm" onclick="deleteProduct(${p.id})" style="background:#fef2f2;color:#dc2626;">🗑️ Delete</button>
+      </div>
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x290/f9eef4/8B2252?text=No+Image'">
+        ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
+        <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">🤍</button>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-price-row">
+          <span class="product-price">₹${p.price}</span>
+        </div>
+        <button class="order-btn" onclick="openOrder('${p.name.replace(/'/g,"\\'")}',${p.price},'${p.category}')">
+          ${wasvg} Order on WhatsApp
+        </button>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('statProducts').textContent = products.length + '+';
+  document.getElementById('statTotal').textContent = products.length;
+}
+
+function filterProd(cat, btn){
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  const target = btn || document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+  if(target) target.classList.add('active');
+  renderProducts(cat);
+}
+
+// Filter bar event delegation — works perfectly on mobile touch
+document.getElementById('filterBar').addEventListener('click', function(e){
+  const btn = e.target.closest('.filter-btn');
+  if(!btn) return;
+  const cat = btn.dataset.cat;
+  filterProd(cat, btn);
+});
+
+// ── WISHLIST ──
+function toggleWish(btn){
+  btn.classList.toggle('liked');
+  btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
+}
+
+// ── ORDER MODAL ──
+function openOrder(name,price,cat){
+  document.getElementById('orderModalSub').textContent = name;
+  document.getElementById('oProduct').textContent = name;
+  document.getElementById('oCategory').textContent = cat.charAt(0).toUpperCase()+cat.slice(1);
+  document.getElementById('oPrice').textContent = '₹'+price;
+  const msg = encodeURIComponent(`Hello VINI TRENDS 👋\n\nI want to order:\n*${name}*\nPrice: ₹${price}\n\nPlease send me availability & delivery details. Thank you! 🙏`);
+  document.getElementById('orderWaBtn').href = `https://wa.me/${WA}?text=${msg}`;
+  openOverlay('orderOverlay');
+}
+
+function showScreenshotTip(){
+  const name = document.getElementById('oProduct').textContent;
+  const price = document.getElementById('oPrice').textContent;
+  alert(`📸 Screenshot Guide\n\nScreenshot this popup now!\nIt shows:\n• Product: ${name}\n• Price: ${price}\n• Shop: VINI TRENDS\n• WhatsApp: +91 88669 20012\n\nThen tap "Open WhatsApp" and send the screenshot with your name & address!`);
+}
+
+// ── REVIEW MODAL ──
+function openReviewModal(){
+  const sel = document.getElementById('rvProduct');
+  sel.innerHTML = '<option value="">— Select product —</option>'+products.map(p=>`<option>${p.name}</option>`).join('');
+  document.getElementById('reviewFormWrap').style.display='block';
+  document.getElementById('reviewSuccess').style.display='none';
+  document.getElementById('rvName').value='';
+  document.getElementById('rvText').value='';
+  selectedStars=0;
+  document.querySelectorAll('#starPick span').forEach(s=>s.classList.remove('on'));
+  openOverlay('reviewOverlay');
+}
+
+function setStar(n){
+  selectedStars=n;
+  document.querySelectorAll('#starPick span').forEach((s,i)=>{
+    s.classList.toggle('on',i<n);
+  });
+}
+
+function submitReview(){
+  const name=document.getElementById('rvName').value.trim();
+  const text=document.getElementById('rvText').value.trim();
+  if(!name){alert('Please enter your name!');return;}
+  if(!selectedStars){alert('Please select a star rating!');return;}
+  if(!text){alert('Please write your review!');return;}
+  const prod=document.getElementById('rvProduct').value;
+  const now=new Date();
+  const month=now.toLocaleString('default',{month:'short'});
+  reviews.push({id:nextRvId++,name,stars:selectedStars,product:prod||'',text,date:month+' '+now.getFullYear(),approved:false});
+  renderReviews();
+  renderAdminReviews();
+  updatePendingCount();
+  document.getElementById('reviewFormWrap').style.display='none';
+  document.getElementById('reviewSuccess').style.display='block';
+}
+
+function renderReviews(){
+  const grid=document.getElementById('reviewsGrid');
+  const approved=reviews.filter(r=>r.approved);
+  grid.innerHTML=approved.map(r=>`
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">${r.name.charAt(0)}</div>
+        <div class="review-meta">
+          <div class="review-name">${r.name}</div>
+          <div class="review-date">${r.date}</div>
+        </div>
+      </div>
+      <div class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+      ${r.product?`<div class="review-product">Bought: ${r.product}</div>`:''}
+      <div class="review-text">"${r.text}"</div>
+      ${isAdmin?`<button class="review-del" onclick="deleteReview(${r.id})">🗑️ Delete</button>`:''}
+    </div>
+  `).join('');
+}
+
+function deleteReview(id){
+  if(!confirm('Delete this review?'))return;
+  reviews=reviews.filter(r=>r.id!==id);
+  renderReviews();renderAdminReviews();updatePendingCount();
+}
+
+// ── ADMIN ──
+function toggleAdminLogin(){
+  if(isAdmin){openAdminPanel();}
+  else{openOverlay('adminLoginOverlay');}
+}
+
+function doAdminLogin(){
+  const pass=document.getElementById('adminPassInput').value;
+  if(pass===ADMIN_PASS){
+    isAdmin=true;
+    closeOverlay('adminLoginOverlay');
+    document.getElementById('adminPassInput').value='';
+    document.getElementById('adminLoginErr').style.display='none';
+    enableAdminMode();
+    openAdminPanel();
+  } else {
+    document.getElementById('adminLoginErr').style.display='block';
+  }
+}
+
+function enableAdminMode(){
+  document.getElementById('adminBadge').style.display='block';
+  document.querySelector('.admin-toggle-btn').textContent='⚙️ Panel';
+  renderProducts();
+  renderReviews();
+  updatePendingCount();
+}
+
+function logoutAdmin(){
+  isAdmin=false;
+  document.getElementById('adminBadge').style.display='none';
+  document.querySelector('.admin-toggle-btn').textContent='🔐 Admin';
+  closeAdminPanel();
+  renderProducts();
+  renderReviews();
+}
+
+function openAdminPanel(){
+  document.getElementById('adminPanel').classList.add('open');
+  renderAdminProducts();
+  renderAdminReviews();
+  updatePendingCount();
+}
+
+function closeAdminPanel(){
+  document.getElementById('adminPanel').classList.remove('open');
+}
+
+function renderAdminProducts(){
+  const el=document.getElementById('apProductList');
+  el.innerHTML=products.map(p=>`
+    <div class="ap-product">
+      <img class="ap-img" src="${p.img}" onerror="this.src='https://via.placeholder.com/52/f9eef4/8B2252?text=?'">
+      <div class="ap-info">
+        <div class="ap-name" title="${p.name}">${p.name}</div>
+        <div class="ap-price">₹${p.price} · ${p.category}</div>
+      </div>
+      <div class="ap-actions">
+        <button class="ap-btn" onclick="openEditProduct(${p.id})" title="Edit">✏️</button>
+        <button class="ap-btn del" onclick="deleteProduct(${p.id})" title="Delete">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('statTotal').textContent=products.length;
+}
+
+function renderAdminReviews(){
+  const el=document.getElementById('apReviewList');
+  if(!reviews.length){el.innerHTML='<p style="font-size:.82rem;color:var(--text-3);">No reviews yet.</p>';return;}
+  el.innerHTML=reviews.map(r=>`
+    <div class="ap-review">
+      <div class="ap-review-name">${r.name} ${'★'.repeat(r.stars)} ${!r.approved?'<span class="pending-badge">Pending</span>':''}</div>
+      <div class="ap-review-text">${r.text.substring(0,80)}...</div>
+      <div class="ap-review-actions">
+        ${!r.approved?`<button class="ap-review-btn approve" onclick="approveReview(${r.id})">✓ Approve</button>`:'<span style="color:#16a34a;font-size:.75rem;">✓ Approved</span>'}
+        <button class="ap-review-btn reject" onclick="deleteReview(${r.id})">✕ Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function approveReview(id){
+  const r=reviews.find(r=>r.id===id);
+  if(r){r.approved=true;}
+  renderReviews();renderAdminReviews();updatePendingCount();
+}
+
+function updatePendingCount(){
+  const count=reviews.filter(r=>!r.approved).length;
+  document.getElementById('statPending').textContent=count;
+  const badge=document.getElementById('pendingBadge');
+  if(count>0){badge.style.display='inline';badge.textContent=count+' pending';}
+  else{badge.style.display='none';}
+}
+
+// ── EDIT PRODUCT ──
+function openEditProduct(id){
+  const p=products.find(p=>p.id===id);
+  if(!p)return;
+  document.getElementById('editId').value=id;
+  document.getElementById('editName').value=p.name;
+  document.getElementById('editPrice').value=p.price;
+  document.getElementById('editCat').value=p.category;
+  document.getElementById('editBadge').value=p.badge||'';
+  document.getElementById('editImg').value=p.img.startsWith('data:')?'':p.img;
+  const prev=document.getElementById('editImgPreview');
+  prev.src=p.img;prev.style.display='block';
+  editingImgData=null;
+  openOverlay('editOverlay');
+}
+
+function previewEditImg(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    editingImgData=e.target.result;
+    const prev=document.getElementById('editImgPreview');
+    prev.src=editingImgData;prev.style.display='block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveEditProduct(){
+  const id=parseInt(document.getElementById('editId').value);
+  const p=products.find(p=>p.id===id);
+  if(!p)return;
+  p.name=document.getElementById('editName').value.trim()||p.name;
+  p.price=parseInt(document.getElementById('editPrice').value)||p.price;
+  p.category=document.getElementById('editCat').value;
+  p.badge=document.getElementById('editBadge').value.trim();
+  const urlInput=document.getElementById('editImg').value.trim();
+  if(editingImgData) p.img=editingImgData;
+  else if(urlInput) p.img=urlInput;
+  closeOverlay('editOverlay');
+  renderProducts();
+  renderAdminProducts();
+  alert('✅ Product updated successfully!');
+}
+
+function deleteProduct(id){
+  if(!confirm('Are you sure you want to delete this product?'))return;
+  products=products.filter(p=>p.id!==id);
+  renderProducts();
+  renderAdminProducts();
+}
+
+// ── ADD PRODUCT ──
+function handleNewImg(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    newImgData=e.target.result;
+    const prev=document.getElementById('newImgPreview');
+    prev.src=newImgData;prev.style.display='block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function addProduct(){
+  const name=document.getElementById('newName').value.trim();
+  const price=parseInt(document.getElementById('newPrice').value);
+  const cat=document.getElementById('newCat').value;
+  const badge=document.getElementById('newBadge').value.trim();
+  const urlImg=document.getElementById('newImgUrl').value.trim();
+  if(!name){alert('Please enter a product name.');return;}
+  if(!price){alert('Please enter a price.');return;}
+  const img=newImgData||urlImg||'https://via.placeholder.com/300x290/f9eef4/8B2252?text='+encodeURIComponent(name);
+  products.push({id:nextProdId++,name,price,category:cat,img,badge});
+  newImgData=null;
+  document.getElementById('newName').value='';
+  document.getElementById('newPrice').value='';
+  document.getElementById('newBadge').value='';
+  document.getElementById('newImgUrl').value='';
+  document.getElementById('newImgPreview').style.display='none';
+  document.getElementById('newImgUpload').value='';
+  renderProducts();renderAdminProducts();
+  alert('✅ Product added successfully!');
+}
+
+// ── OVERLAY HELPERS ──
+function openOverlay(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeOverlay(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.overlay').forEach(el=>{
+  el.addEventListener('click',e=>{if(e.target===el)closeOverlay(el.id);});
+});
+
+// ── MOBILE NAV ──
+function toggleNav(){
+  const links=document.querySelector('.nav-links');
+  if(links.style.display==='flex'){links.style.display='none';}
+  else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='68px';links.style.left='0';links.style.right='0';links.style.background='white';links.style.padding='1rem 2rem';links.style.borderBottom='1px solid var(--border)';links.style.zIndex='150';}
+}
+
+// ── INIT ──
+renderProducts('all');
+renderReviews();
+</script>
+</body>
+</html>
