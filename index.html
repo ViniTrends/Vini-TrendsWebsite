@@ -218,6 +218,49 @@ nav{
 }
 .order-btn:hover{background:var(--wa-dark);}
 
+/* ── CART ── */
+.cart-checkbox-wrap{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem;font-size:.82rem;color:var(--text-2);}
+.cart-checkbox-wrap input{width:17px;height:17px;accent-color:var(--berry);cursor:pointer;}
+.add-cart-btn{
+  width:100%;background:var(--berry-pale);color:var(--berry);border:1.5px solid var(--berry);
+  padding:.65rem;border-radius:50px;font-size:.84rem;font-weight:600;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  transition:.2s;font-family:'Inter',sans-serif;margin-bottom:.55rem;
+}
+.add-cart-btn:hover{background:var(--berry);color:white;}
+.add-cart-btn.in-cart{background:var(--berry);color:white;}
+.cart-float-btn{
+  position:fixed;bottom:1.6rem;left:1.6rem;z-index:300;
+  background:var(--berry);color:white;border:none;
+  padding:.9rem 1.3rem;border-radius:50px;
+  display:flex;align-items:center;gap:.55rem;
+  box-shadow:0 6px 30px var(--shadow);cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;
+}
+.cart-count-badge{
+  background:var(--gold);color:white;border-radius:50%;
+  width:22px;height:22px;display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:700;
+}
+.cart-item-row{
+  display:flex;align-items:center;gap:.8rem;padding:.8rem 0;
+  border-bottom:1px solid var(--border);
+}
+.cart-item-img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+.cart-item-info{flex:1;min-width:0;}
+.cart-item-name{font-size:.86rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cart-item-price{font-size:.8rem;color:var(--berry);margin-top:.15rem;}
+.cart-qty{display:flex;align-items:center;gap:.5rem;}
+.qty-btn{
+  width:26px;height:26px;border-radius:50%;border:1px solid var(--border);background:white;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--berry);
+}
+.qty-btn:hover{background:var(--berry-pale);}
+.cart-item-remove{background:none;border:none;color:#dc2626;cursor:pointer;font-size:1rem;padding:.2rem;}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;font-size:1.05rem;font-weight:700;color:var(--berry);border-top:2px solid var(--border);margin-top:.5rem;}
+.cart-empty{text-align:center;padding:2.5rem 1rem;color:var(--text-3);}
+.cart-empty-icon{font-size:2.5rem;margin-bottom:.8rem;}
+
 /* ── REVIEWS ── */
 .reviews-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;}
 .write-review-btn{
@@ -272,7 +315,7 @@ footer{
 }
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:.4rem;}
 .footer-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6;}
-.footer-heading{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom.8rem;}
+.footer-heading{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:.8rem;}
 .footer-links{list-style:none;margin-top:.8rem;}
 .footer-links li{margin-bottom:.4rem;}
 .footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;transition:color .2s;}
@@ -291,16 +334,24 @@ footer{
 @keyframes wa-pulse{0%,100%{box-shadow:0 6px 30px rgba(37,211,102,.4)}50%{box-shadow:0 6px 40px rgba(37,211,102,.65)}}
 
 /* ── MODALS ── */
+/* FIX (Save button bug): switched align-items from "center" to "flex-start" and
+   added vertical auto-margins on .modal. This is the standard fix for the classic
+   "flexbox centering clips overflowing content" bug — previously, when a tall
+   image preview made the Edit Product popup taller than the screen, the popup
+   was forced to stay vertically centered and its bottom (with the Save button)
+   was pushed off-screen with no way to scroll down to it. Now the popup still
+   centers normally when it's short, but becomes fully scrollable — top to
+   bottom, Save button included — whenever its content is tall. */
 .overlay{
   display:none;position:fixed;inset:0;z-index:500;
   background:rgba(20,5,12,.65);backdrop-filter:blur(8px);
-  align-items:center;justify-content:center;padding:1rem;overflow-y:auto;
+  align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;
 }
 .overlay.open{display:flex;}
 .modal{
   background:white;border-radius:26px;max-width:460px;width:100%;
   padding:2rem;position:relative;animation:pop .25s ease;
-  max-height:90vh;overflow-y:auto;
+  max-height:none;margin:auto;
 }
 @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
 .modal-close{
@@ -448,7 +499,10 @@ footer{
 }
 
 /* ── EDIT PRODUCT MODAL ── */
-#editModal .modal{max-width:480px;}
+#editOverlay .modal{max-width:480px;}
+/* FIX: cap preview image height so a large uploaded photo can't blow up the
+   popup's height in the first place (prevention, on top of the scroll fix above) */
+#editImgPreview,#newImgPreview{max-height:220px;object-fit:cover;}
 
 /* ── MOBILE ── */
 @media(max-width:900px){
@@ -464,6 +518,8 @@ footer{
   .section{padding:3.5rem 1.4rem;}
   footer{grid-template-columns:1fr;}
   .admin-panel{width:100%;}
+  .cart-float-btn{left:1rem;bottom:1rem;}
+  .float-wa{right:1rem;bottom:1rem;}
 }
 </style>
 </head>
@@ -544,7 +600,7 @@ footer{
 <section class="section" id="shop">
   <div class="section-eyebrow">Our Collection</div>
   <h2 class="section-title">Shop Girls' Wear</h2>
-  <p class="section-sub">Every piece handpicked for style, comfort, and confidence. Click any item to order via WhatsApp.</p>
+  <p class="section-sub">Every piece handpicked for style, comfort, and confidence. Add items to your cart and order them all together, or order a single item instantly via WhatsApp.</p>
   <div class="filters" id="filterBar">
     <button class="filter-btn active" data-cat="all">All</button>
     <button class="filter-btn" data-cat="tops">Tops</button>
@@ -613,7 +669,12 @@ footer{
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- ═══════════════════ ORDER MODAL ═══════════════════ -->
+<!-- CART FLOATING BUTTON -->
+<button class="cart-float-btn" id="cartFloatBtn" onclick="openCart()">
+  🛒 Cart <span class="cart-count-badge" id="cartCountBadge">0</span>
+</button>
+
+<!-- ═══════════════════ ORDER MODAL (single item) ═══════════════════ -->
 <div class="overlay" id="orderOverlay">
   <div class="modal">
     <button class="modal-close" onclick="closeOverlay('orderOverlay')">✕</button>
@@ -638,6 +699,29 @@ footer{
       Open WhatsApp to Order
     </a>
     <button class="ss-big" onclick="showScreenshotTip()">📸 Screenshot This Order Card</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ CART MODAL (multi item) ═══════════════════ -->
+<div class="overlay" id="cartOverlay">
+  <div class="modal" style="max-width:480px;">
+    <button class="modal-close" onclick="closeOverlay('cartOverlay')">✕</button>
+    <h2>Your Cart 🛒</h2>
+    <p class="modal-sub">Review your items, then send them all to us in one WhatsApp message.</p>
+    <div id="cartItemsWrap"></div>
+    <div id="cartTotalWrap" style="display:none;">
+      <div class="cart-total-row"><span>Total</span><span id="cartTotalAmount">₹0</span></div>
+      <div class="order-steps" style="margin-top:1rem;">
+        <p style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);margin-bottom:.8rem;">📸 How to Order</p>
+        <div class="order-step"><div class="step-circle">1</div><div class="step-text">Tap <strong>"Send Order on WhatsApp"</strong> below — it opens a chat with your full cart pre-filled.</div></div>
+        <div class="order-step"><div class="step-circle">2</div><div class="step-text">Send us your name & address in the same chat. We confirm & dispatch! 🎉</div></div>
+      </div>
+      <a class="wa-big" id="cartWaBtn" href="#" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send Order on WhatsApp
+      </a>
+      <button class="ss-big" onclick="clearCart()" style="background:transparent;color:var(--berry);border:1.5px solid var(--berry);">🗑️ Clear Cart</button>
+    </div>
   </div>
 </div>
 
@@ -799,6 +883,7 @@ let selectedStars = 0;
 let editingImgData = null;
 let newImgData = null;
 let currentFilter = 'all';
+let cart = []; // {id, name, price, qty, img}
 
 // ── DATA ──
 let products = [
@@ -833,7 +918,9 @@ function renderProducts(filter){
   currentFilter = filter || currentFilter;
   const grid = document.getElementById('productGrid');
   const list = currentFilter==='all' ? products : products.filter(p=>p.category===currentFilter);
-  grid.innerHTML = list.map(p=>`
+  grid.innerHTML = list.map(p=>{
+    const inCart = cart.some(c=>c.id===p.id);
+    return `
     <div class="product-card${isAdmin?' admin-mode':''}" id="pc-${p.id}">
       <div class="admin-overlay">
         <button class="admin-btn-sm" onclick="openEditProduct(${p.id})">✏️ Edit</button>
@@ -850,12 +937,15 @@ function renderProducts(filter){
         <div class="product-price-row">
           <span class="product-price">₹${p.price}</span>
         </div>
+        <button class="add-cart-btn${inCart?' in-cart':''}" id="cartbtn-${p.id}" onclick="toggleCartItem(${p.id})">
+          ${inCart?'✓ Added to Cart':'🛒 Add to Cart'}
+        </button>
         <button class="order-btn" onclick="openOrder('${p.name.replace(/'/g,"\\'")}',${p.price},'${p.category}')">
           ${wasvg} Order on WhatsApp
         </button>
       </div>
     </div>
-  `).join('');
+  `}).join('');
   document.getElementById('statProducts').textContent = products.length + '+';
   document.getElementById('statTotal').textContent = products.length;
 }
@@ -882,7 +972,98 @@ function toggleWish(btn){
   btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
 }
 
-// ── ORDER MODAL ──
+// ── CART ──
+function toggleCartItem(id){
+  const p = products.find(p=>p.id===id);
+  if(!p) return;
+  const idx = cart.findIndex(c=>c.id===id);
+  if(idx>-1){
+    cart.splice(idx,1);
+  } else {
+    cart.push({id:p.id,name:p.name,price:p.price,img:p.img,qty:1});
+  }
+  updateCartUI();
+}
+
+function changeQty(id, delta){
+  const item = cart.find(c=>c.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty<1) item.qty = 1;
+  updateCartUI();
+}
+
+function removeFromCart(id){
+  cart = cart.filter(c=>c.id!==id);
+  updateCartUI();
+}
+
+function clearCart(){
+  if(cart.length && !confirm('Clear all items from your cart?')) return;
+  cart = [];
+  updateCartUI();
+}
+
+function cartTotal(){
+  return cart.reduce((sum,c)=>sum + c.price*c.qty, 0);
+}
+
+function updateCartUI(){
+  // floating badge
+  const count = cart.reduce((sum,c)=>sum+c.qty,0);
+  document.getElementById('cartCountBadge').textContent = count;
+  // re-render the add-to-cart buttons on visible product cards without a full re-render
+  document.querySelectorAll('.product-card').forEach(card=>{
+    const id = parseInt(card.id.replace('pc-',''));
+    const btn = document.getElementById('cartbtn-'+id);
+    if(!btn) return;
+    const inCart = cart.some(c=>c.id===id);
+    btn.classList.toggle('in-cart', inCart);
+    btn.textContent = inCart ? '✓ Added to Cart' : '🛒 Add to Cart';
+  });
+  renderCartModal();
+}
+
+function renderCartModal(){
+  const wrap = document.getElementById('cartItemsWrap');
+  const totalWrap = document.getElementById('cartTotalWrap');
+  if(!cart.length){
+    wrap.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div>Your cart is empty.<br>Add a few items to order them together!</div>`;
+    totalWrap.style.display = 'none';
+    return;
+  }
+  wrap.innerHTML = cart.map(c=>`
+    <div class="cart-item-row">
+      <img class="cart-item-img" src="${c.img}" alt="${c.name}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-price">₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
+      </div>
+      <div class="cart-qty">
+        <button class="qty-btn" onclick="changeQty(${c.id},-1)">−</button>
+        <span>${c.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${c.id},1)">+</button>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${c.id})" title="Remove">✕</button>
+    </div>
+  `).join('');
+  totalWrap.style.display = 'block';
+  const total = cartTotal();
+  document.getElementById('cartTotalAmount').textContent = '₹'+total;
+  let msg = `Hello VINI TRENDS 👋\n\nI'd like to order the following items:\n\n`;
+  cart.forEach((c,i)=>{
+    msg += `${i+1}. ${c.name} — ₹${c.price} x ${c.qty} = ₹${c.price*c.qty}\n`;
+  });
+  msg += `\n*Total: ₹${total}*\n\nPlease confirm availability & delivery details. Thank you! 🙏`;
+  document.getElementById('cartWaBtn').href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+}
+
+function openCart(){
+  renderCartModal();
+  openOverlay('cartOverlay');
+}
+
+// ── ORDER MODAL (single item, instant) ──
 function openOrder(name,price,cat){
   document.getElementById('orderModalSub').textContent = name;
   document.getElementById('oProduct').textContent = name;
@@ -1081,6 +1262,10 @@ function previewEditImg(input){
     editingImgData=e.target.result;
     const prev=document.getElementById('editImgPreview');
     prev.src=editingImgData;prev.style.display='block';
+    // Make sure the newly-tall modal content is scrolled so the
+    // Save Changes button is visible right after the photo updates.
+    const overlay=document.getElementById('editOverlay');
+    overlay.scrollTop = 0;
   };
   reader.readAsDataURL(file);
 }
@@ -1105,8 +1290,10 @@ function saveEditProduct(){
 function deleteProduct(id){
   if(!confirm('Are you sure you want to delete this product?'))return;
   products=products.filter(p=>p.id!==id);
+  cart=cart.filter(c=>c.id!==id);
   renderProducts();
   renderAdminProducts();
+  updateCartUI();
 }
 
 // ── ADD PRODUCT ──
@@ -1166,6 +1353,7 @@ function toggleNav(){
 // ── INIT ──
 renderProducts('all');
 renderReviews();
+updateCartUI();
 </script>
 </body>
 </html>
